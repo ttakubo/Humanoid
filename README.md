@@ -49,6 +49,8 @@ FindMther関数
 
 再帰関数を使った効率の良い順運動学計算
 
+<img src="https://github.com/ttakubo/Humanoid/blob/main/anim.gif">
+
 
 ## 逆運動学
 
@@ -59,7 +61,17 @@ FindMther関数
 ４種類のシミュレーションを順に行っていく．
 
 ### ３軸の回転シミュレーション：無重力
+
+<img src="https://github.com/ttakubo/Humanoid/blob/main/rotate.gif">
+
 ### 並進と１軸の回転のシミュレーション：無重力
 
+<img src="https://github.com/ttakubo/Humanoid/blob/main/screwmotion.gif>
+
 ### 並進と２軸の回転のシミュレーション：無重力
+
+<img src="https://github.com/ttakubo/Humanoid/blob/main/rigidbody_fly.gif">
+
 ### コマのシミュレーション：重力＋接触（外力）あり
+
+<img src="https://github.com/ttakubo/Humanoid/blob/main/top_anim.gif">
