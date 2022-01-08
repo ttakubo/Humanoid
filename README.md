@@ -17,6 +17,7 @@
 
 プログラムが短くなっている理由は，アルゴリズムとして再帰関数を利用しているためです．プログラムを理解する上で，<a href ="https://qiita.com/drken/items/23a4f604fa3f505dd5ad">ここ（再帰関数を学ぶと、どんな世界が広がるか）</a>の解説などを見て理解すると良いと思います．
 
+数式の表示には<a href ="https://tex-image-link-generator.herokuapp.com/">tex image link generator</a>を使わせていただきました．
 
 ## データ構造
 動力学を含む最終的なリンクのクラスは下記の通り．
@@ -49,12 +50,12 @@ FindMther関数
 
 再帰関数を使った効率の良い順運動学計算
 
-<img src="https://github.com/ttakubo/Humanoid/blob/main/anim.gif">
 
 
 ## 逆運動学
 
-ヤコビ行列を使った逆運動学の計算とLM方を使ったロバストな逆運動学の計算を行う．
+ヤコビ行列を使った逆運動学の計算とLM方を使ったロバストな逆運動学の計算を行う．<br>
+<img src="https://github.com/ttakubo/Humanoid/blob/main/anim.gif">
 
 ## 動力学
 
@@ -66,7 +67,7 @@ FindMther関数
 
 ### 並進と１軸の回転のシミュレーション：無重力
 
-<img src="https://github.com/ttakubo/Humanoid/blob/main/screwmotion.gif>
+<img src="https://github.com/ttakubo/Humanoid/blob/main/screwmotion.gif">
 
 ### 並進と２軸の回転のシミュレーション：無重力
 
@@ -75,3 +76,32 @@ FindMther関数
 ### コマのシミュレーション：重力＋接触（外力）あり
 
 <img src="https://github.com/ttakubo/Humanoid/blob/main/top_anim.gif">
+
+
+### 剛体リンクの順動力学シミュレーション：床反力は適当
+
+Humanoid Robotの本家のMatlabプログラムには，床反力の項目がないために無重力で落ちていくだけとなっていたが，InverseDynamicsの関数に重心に加わる外力項を加えることで簡易的に床反力を再現しました．
+
+本にある親リンクと子リンクから加わる力の等式は下記の通り．<br>
+<img src=
+"https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle+%5Cbegin%7Bbmatrix%7D%0Af_j++%5C%5C+%5Ctau_j+%0A%5Cend%7Bbmatrix%7D%0A%3D+I%5ES_j+%5Cdot%7B%5Cxi_j%7D+%2B+%5Cxi_j+%5Ctimes+I%5ES_j+%5Cxi_j+-%0A%5Cbegin%7Bbmatrix%7D%0Af%5EE_j+%5C%5C+%5Ctau%5EE_j+%0A%5Cend%7Bbmatrix%7D%0A%2B%0A%5Cbegin%7Bbmatrix%7D%0Af_%7Bj%2B1%7D++%5C%5C+%5Ctau_%7Bj+%2B1%7D%0A%5Cend%7Bbmatrix%7D" 
+alt="\begin{bmatrix}
+f_j  \\ \tau_j 
+\end{bmatrix}
+= I^S_j \dot{\xi_j} + \xi_j \times I^S_j \xi_j -
+\begin{bmatrix}
+f^E_j \\ \tau^E_j 
+\end{bmatrix}
++
+\begin{bmatrix}
+f_{j+1}  \\ \tau_{j +1}
+\end{bmatrix}">
+<br>
+Matlabの本家のプログラムだとリンクの重心に加わる力<br>
+<img src=
+"https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle+%5Cbegin%7Bbmatrix%7D%0Af%5EE_j+%5C%5C+%5Ctau%5EE_j+%0A%5Cend%7Bbmatrix%7D" 
+alt="\begin{bmatrix}
+f^E_j \\ \tau^E_j 
+\end{bmatrix}">
+<br>
+が実装されていないので，この外力項を追加すると接触や各リンクの重力を考えたシミュレーションができる．
