@@ -86,7 +86,9 @@ class uLINK:
 <img src="https://github.com/ttakubo/Humanoid/blob/main/top_anim.gif">
 
 
-### 剛体リンクの順動力学シミュレーション：床反力は適当
+### ２足歩行ロボットの順動力学シミュレーション：床反力は適当
+
+<img src="https://github.com/ttakubo/Humanoid/blob/main/biped_robot_sim.gif">
 
 Humanoid Robotの本家のMatlabプログラムには，床反力の項目がないために無重力で落ちていくだけとなっていたが，InverseDynamicsの関数に重心に加わる外力項を加えることで簡易的に床反力を再現しました．
 
